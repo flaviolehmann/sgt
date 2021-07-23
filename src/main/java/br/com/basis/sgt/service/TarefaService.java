@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -20,7 +19,12 @@ public class TarefaService {
     private final TarefaRepository tarefaRepository;
     private final TarefaMapper tarefaMapper;
 
-    public List<TarefaDTO> obterTodos() {
+    public List<TarefaDTO> obterTodos(String titulo) {
+        // Caso o título seja passado, realiza o filtro por título
+        if (titulo != null && !titulo.isEmpty()) {
+            return tarefaMapper.toDto(tarefaRepository.encontarTodosPorTitulo(titulo));
+        }
+        // Caso não, retorna todos as tarefas no banco
         return tarefaMapper.toDto(tarefaRepository.findAll());
     }
 
@@ -33,6 +37,10 @@ public class TarefaService {
         Tarefa tarefa = tarefaMapper.toEntity(tarefaDTO);
         Tarefa tarefaSalva = tarefaRepository.save(tarefa);
         return tarefaMapper.toDto(tarefaSalva);
+    }
+
+    public void deletarPorId(Long id) {
+        tarefaRepository.deleteById(id);
     }
 
 }

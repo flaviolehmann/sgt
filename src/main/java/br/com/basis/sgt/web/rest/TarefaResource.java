@@ -8,11 +8,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,9 +26,14 @@ public class TarefaResource {
 
     private final TarefaService tarefaService;
 
+    /**
+     * Busca todos os títulos através
+     * @param titulo
+     * @return
+     */
     @GetMapping
-    public ResponseEntity<List<TarefaDTO>> obterTodos() {
-        return new ResponseEntity<>(tarefaService.obterTodos(), HttpStatus.OK);
+    public ResponseEntity<List<TarefaDTO>> obterTodos(@RequestParam("titulo") String titulo) {
+        return new ResponseEntity<>(tarefaService.obterTodos(titulo), HttpStatus.OK);
     }
 
     @PostMapping
@@ -37,6 +44,12 @@ public class TarefaResource {
     @GetMapping("/{id}")
     public ResponseEntity<TarefaDTO> obterPorId(@PathVariable("id") Long id) {
         return new ResponseEntity<>(tarefaService.obterPorId(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarPorId(@PathVariable("id") Long id) {
+        tarefaService.deletarPorId(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
