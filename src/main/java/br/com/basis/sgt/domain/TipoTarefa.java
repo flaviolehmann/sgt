@@ -1,4 +1,4 @@
-package br.com.basis.sgt;
+package br.com.basis.sgt.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package br.com.basis.sgt;
+package br.com.basis.sgt.service.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
