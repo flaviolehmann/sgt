@@ -32,7 +32,7 @@ public class TarefaResource {
      * @return
      */
     @GetMapping
-    public ResponseEntity<List<TarefaDTO>> obterTodos(@RequestParam("titulo") String titulo) {
+    public ResponseEntity<List<TarefaDTO>> obterTodos(@RequestParam(value = "titulo", required = true) String titulo) {
         return new ResponseEntity<>(tarefaService.obterTodos(titulo), HttpStatus.OK);
     }
 

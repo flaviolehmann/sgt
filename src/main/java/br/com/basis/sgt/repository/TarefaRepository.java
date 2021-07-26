@@ -16,7 +16,7 @@ import java.util.List;
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
     /**
-     * Encontra todas as tarefas por Título
+     * Encontra todas as tarefas por Título. [NÃO ESTÁ SENDO UTILIZADO NO MOMENTO]
      * @param titulo
      * @return
      */
@@ -29,7 +29,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
      * @param titulo
      * @return
      */
-    @Query("FROM Tarefa WHERE titulo LIKE %:titulo%")
+    @Query("FROM Tarefa WHERE titulo = null OR titulo LIKE %:titulo%")
     List<Tarefa> encontarTodosPorTitulo(@Param("titulo") String titulo);
 
 
