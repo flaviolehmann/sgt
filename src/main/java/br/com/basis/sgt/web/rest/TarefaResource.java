@@ -2,10 +2,7 @@ package br.com.basis.sgt.web.rest;
 
 import br.com.basis.sgt.service.TarefaService;
 import br.com.basis.sgt.service.dto.TarefaDTO;
-import br.com.basis.sgt.service.error.TarefaNaoEncontradaException;
-import br.com.basis.sgt.domain.Tarefa;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,10 +18,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tarefas")
-@RequiredArgsConstructor
+
 public class TarefaResource {
 
     private final TarefaService tarefaService;
+
+    public TarefaResource(TarefaService tarefaService) {
+        this.tarefaService = tarefaService;
+    }
 
     /**
      * Busca todos os títulos através

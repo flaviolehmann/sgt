@@ -19,7 +19,7 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
      *
      * @return
      */
-    List<Comentario> findAllBySetor(String descricao);
+    List<Comentario> findAllByDescricao(String descricao);
 
     /**
      * Encontra todos os responsaveis por Setor

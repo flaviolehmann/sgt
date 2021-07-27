@@ -5,7 +5,7 @@ import br.com.basis.sgt.repository.TarefaRepository;
 import br.com.basis.sgt.service.dto.TarefaDTO;
 import br.com.basis.sgt.service.error.TarefaNaoEncontradaException;
 import br.com.basis.sgt.service.mapper.TarefaMapper;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,11 +13,16 @@ import java.util.List;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
+
 public class TarefaService {
 
     private final TarefaRepository tarefaRepository;
     private final TarefaMapper tarefaMapper;
+
+    public TarefaService(TarefaRepository tarefaRepository, TarefaMapper tarefaMapper) {
+        this.tarefaRepository = tarefaRepository;
+        this.tarefaMapper = tarefaMapper;
+    }
 
     public List<TarefaDTO> obterTodos(String titulo) {
         // Caso o título seja passado, realiza o filtro por título
@@ -42,5 +47,7 @@ public class TarefaService {
     public void deletarPorId(Long id) {
         tarefaRepository.deleteById(id);
     }
+
+
 
 }

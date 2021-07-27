@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/responsaveis")
+@RequestMapping("/api/responsavel")
 public class ResponsavelResource {
     private final ResponsavelService responsavelService;
     public ResponsavelResource(ResponsavelService responsavelService) {
