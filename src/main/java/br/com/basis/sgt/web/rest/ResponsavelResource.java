@@ -1,5 +1,6 @@
 package br.com.basis.sgt.web.rest;
 
+import br.com.basis.sgt.service.ResponsavelService;
 import br.com.basis.sgt.service.dto.ResponsavelDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
