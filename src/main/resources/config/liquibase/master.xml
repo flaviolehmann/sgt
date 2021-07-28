@@ -7,4 +7,7 @@
 
     <include file="config/liquibase/changelog/202107211410_add_tarefa.changelog.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/202107231332_add_comentario.changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202107241332_add_responsavel.changelog.xml" relativeToChangelogFile="false"/>
+
+
 </databaseChangeLog>

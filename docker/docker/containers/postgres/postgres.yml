@@ -1,8 +1,0 @@
-version: '2'
-services:
-  postgres:
-    image: postgres:11.5-alpine
-    environment:
-      POSTGRES_PASSWORD: SGT
-    ports:
-      - "5432:5432"
