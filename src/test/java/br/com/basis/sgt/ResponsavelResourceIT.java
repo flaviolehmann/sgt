@@ -124,24 +124,50 @@ public class ResponsavelResourceIT {
                         .contentType(APPLICATION_JSON_UTF8)
         ).andExpect(status().isNotFound());
     }
+
+
+
     @Test
-    public void obterTodosSem() throws Exception {
+    public void deletetar() throws Exception{
+        Long idResponsavel = salvarResponsavel(getResponsavelDTO());
+        getMockMvc().perform(
+                delete("/api/responsavel/"+ idResponsavel)
+                        .contentType(APPLICATION_JSON_UTF8)
+        ).andExpect(status().isOk());
+    }
+    @Test
+    public void obterTodosSemResponsavel() throws Exception {
         salvarResponsavel(getResponsavelDTO());
         getMockMvc().perform(
 
-                get("/api/responsavel/" + idInexistente)
+                get("/api/responsavel/" )
                         .contentType(APPLICATION_JSON_UTF8)
-                ).andExpect(status().isNotFound());
+        ).andExpect(status().isOk());
     }
 
     @Test
-    public void obterTodoss() throws Exception {
+    public void obterTodossResponsaveis() throws Exception {
         salvarResponsavel(getResponsavelDTO());
         getMockMvc().perform(
                 get("/api/responsavel/?setor=sdad")
                         .contentType(APPLICATION_JSON_UTF8)
+        ).andExpect(status().isOk());
+    }
+
+    @Test
+    public void obterTodossResponsaveisSemSetor() throws Exception {
+        salvarResponsavel(getResponsavelDTO());
+        getMockMvc().perform(
+                get("/api/reponsavel/")
+                        .contentType(APPLICATION_JSON_UTF8)
         );
     }
+
+
+
+
+
+
 @Test
     private ResponsavelDTO getResponsavelDTO() {
         ResponsavelDTO responsavelDTO = new ResponsavelDTO();
@@ -152,7 +178,7 @@ public class ResponsavelResourceIT {
     }
 
     @Test
-    public void deletetarResponsavel() throws Exception{
+    public void deletetarComId() throws Exception{
         Long idResponsavel = salvarResponsavel(getResponsavelDTO());
         getMockMvc().perform(
                 delete("/api/responsavel/"+ idResponsavel)

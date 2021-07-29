@@ -90,7 +90,7 @@ public class ComentarioResourceIT {
     private void limparBanco() {
         comentarioRepository.deleteAll();
     }
-@Test
+    @Test
    private Long salvarComentario(ComentarioDTO comentarioDTO) {
      Comentario save = comentarioRepository.save(comentarioMapper.toEntity(comentarioDTO));
      return save.getId();
@@ -128,7 +128,7 @@ public class ComentarioResourceIT {
                         .contentType(APPLICATION_JSON_UTF8)
         ).andExpect(status().isNotFound());
     }
-@Test
+
     private ComentarioDTO getComentarioDTO() {
         ComentarioDTO comentarioDTO = new ComentarioDTO();
         comentarioDTO.setId(1L);
@@ -154,16 +154,16 @@ public class ComentarioResourceIT {
         salvarComentario(getComentarioDTO());
         getMockMvc().perform(
 
-                get("/api/comentarios/" + idInexistente)
+                get("/api/comentario/" )
                         .contentType(APPLICATION_JSON_UTF8)
-        ).andExpect(status().isNotFound());
+        ).andExpect(status().isOk());
     }
 
     @Test
     public void obterTodoss() throws Exception {
         salvarComentario(getComentarioDTO());
         getMockMvc().perform(
-                get("/api/comentarios/?descricacao=sdad")
+                get("/api/comentario/?descricao=sdad")
                         .contentType(APPLICATION_JSON_UTF8)
         );
     }
