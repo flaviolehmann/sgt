@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -13,4 +15,6 @@ public class ComentarioDTO {
     private Long id;
     private String descricao;
     private LocalDate dataReferencia;
+
+    private List<ComentarioDTO> comentarios;
 }

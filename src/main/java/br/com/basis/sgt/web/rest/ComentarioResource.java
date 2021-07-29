@@ -23,7 +23,7 @@ import java.util.List;
          * @return
          */
         @GetMapping
-        public ResponseEntity<List<ComentarioDTO>> obterTodos(@RequestParam("descricao") String descricao) {
+        public ResponseEntity<List<ComentarioDTO>> obterTodos(@RequestParam(value = "descricao", required = false) String descricao) {
             return new ResponseEntity<>(comentarioService.obterTodos(descricao), HttpStatus.OK);
         }
         @PostMapping

@@ -21,7 +21,7 @@ public class ResponsavelResource {
      * @return
      */
     @GetMapping
-    public ResponseEntity<List<ResponsavelDTO>> obterTodos(@RequestParam("setor") String setor) {
+    public ResponseEntity<List<ResponsavelDTO>> obterTodos(@RequestParam(value= "setor", required = false) String setor) {
         return new ResponseEntity<>(responsavelService.obterTodos(setor), HttpStatus.OK);
     }
     @PostMapping
