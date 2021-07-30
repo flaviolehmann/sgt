@@ -126,6 +126,11 @@ public class TarefaResourceIT {
         tarefaDTO.setTarefas(new ArrayList<>());
         return tarefaDTO;
     }
+
+
+
+
+
     @Test
     public void deletetarTarefa() throws Exception{
         Long idTarefa = salvarTarefa(getTarefaDTO());
@@ -134,15 +139,14 @@ public class TarefaResourceIT {
                         .contentType(APPLICATION_JSON_UTF8)
         ).andExpect(status().isOk());
     }
-
     @Test
     public void obterTodosSem() throws Exception {
         salvarTarefa(getTarefaDTO());
         getMockMvc().perform(
 
-                get("/api/tarefas/" + idInexistente)
+                get("/api/tarefas/" )
                         .contentType(APPLICATION_JSON_UTF8)
-        ).andExpect(status().isNotFound());
+        ).andExpect(status().isOk());
     }
 
     @Test
