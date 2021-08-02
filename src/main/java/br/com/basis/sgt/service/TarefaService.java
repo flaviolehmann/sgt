@@ -20,12 +20,7 @@ public class TarefaService {
     private final TarefaMapper tarefaMapper;
 
     public List<TarefaDTO> obterTodos(String titulo) {
-        // Caso o título seja passado, realiza o filtro por título
-        if (titulo != null && !titulo.isEmpty()) {
-            return tarefaMapper.toDto(tarefaRepository.encontarTodosPorTitulo(titulo));
-        }
-        // Caso não, retorna todos as tarefas no banco
-        return tarefaMapper.toDto(tarefaRepository.findAll());
+        return tarefaMapper.toDto(tarefaRepository.encontarTodosPorTitulo(titulo));
     }
 
     public TarefaDTO obterPorId(Long id) {

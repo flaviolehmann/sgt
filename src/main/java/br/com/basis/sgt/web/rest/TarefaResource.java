@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tarefas")
 @RequiredArgsConstructor
+@CrossOrigin()
 public class TarefaResource {
 
     private final TarefaService tarefaService;
@@ -32,7 +34,7 @@ public class TarefaResource {
      * @return
      */
     @GetMapping
-    public ResponseEntity<List<TarefaDTO>> obterTodos(@RequestParam("titulo") String titulo) {
+    public ResponseEntity<List<TarefaDTO>> obterTodos(@RequestParam(value = "titulo", required = true) String titulo) {
         return new ResponseEntity<>(tarefaService.obterTodos(titulo), HttpStatus.OK);
     }
 
