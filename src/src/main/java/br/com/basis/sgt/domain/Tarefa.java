@@ -15,11 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "tarefa")
-
+@Getter
+@Setter
 public class Tarefa {
 
     @Id
@@ -37,7 +37,5 @@ public class Tarefa {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_tarefa")
     List<Comentario> comentarios;
-
-
 
 }

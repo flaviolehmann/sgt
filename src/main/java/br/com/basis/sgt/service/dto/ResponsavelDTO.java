@@ -11,10 +11,13 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TarefaDTO {
+
+
+public class ResponsavelDTO {
 
     private Long id;
-    private String titulo;
-    private String descricao;
-    private List<TarefaDTO> tarefas;
+    private String setor;
+
+    private List<ResponsavelDTO> responsavel;
+
 }

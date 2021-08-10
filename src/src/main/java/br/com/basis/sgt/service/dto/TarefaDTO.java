@@ -16,5 +16,5 @@ public class TarefaDTO {
     private Long id;
     private String titulo;
     private String descricao;
-    private List<TarefaDTO> tarefas;
+    private List<ComentarioDTO> comentarios;
 }

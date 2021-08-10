@@ -1,11 +1,13 @@
 package br.com.basis.sgt.service;
 
+
 import br.com.basis.sgt.domain.Tarefa;
 import br.com.basis.sgt.repository.TarefaRepository;
 import br.com.basis.sgt.service.dto.TarefaDTO;
 import br.com.basis.sgt.service.error.TarefaNaoEncontradaException;
 import br.com.basis.sgt.service.mapper.TarefaMapper;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Service
 @Transactional
+
 
 public class TarefaService {
 
@@ -47,7 +50,5 @@ public class TarefaService {
     public void deletarPorId(Long id) {
         tarefaRepository.deleteById(id);
     }
-
-
 
 }
